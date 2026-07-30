@@ -249,15 +249,15 @@ h1 .excl { color: var(--branco); }
   box-shadow: 0 22px 48px -20px rgba(0, 0, 0, .95);
 }
 
-/* ilha do celular */
+/* ilha do celular, dentro da faixa de status do print */
 .celular::before {
   content: '';
   position: absolute;
-  top: 20px;
+  top: 2.1%;
   left: 50%;
   transform: translateX(-50%);
-  width: 26%;
-  height: 3.1%;
+  width: 25%;
+  height: 2.4%;
   border-radius: 999px;
   background: #05070A;
   z-index: 2;
