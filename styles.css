@@ -77,9 +77,9 @@ img { max-width: 100%; display: block; }
 .wrap {
   position: relative;
   z-index: 1;
-  max-width: 720px;
+  max-width: 1024px;
   margin: 0 auto;
-  padding: 0 18px 130px;
+  padding: 0 24px 130px;
 }
 
 .card {
@@ -272,14 +272,14 @@ img { max-width: 100%; display: block; }
   width: 100%;
   padding: 19px 20px;
   border-radius: 18px;
-  background: linear-gradient(135deg, var(--purple-light) 0%, var(--purple) 48%, var(--purple-dark) 100%);
+  background: linear-gradient(135deg, #25d366 0%, #1f9b3d 100%);
   color: #fff;
   font-size: clamp(17px, 4.6vw, 20px);
   font-weight: 900;
   letter-spacing: .02em;
   text-decoration: none;
   text-transform: uppercase;
-  box-shadow: 0 16px 36px -10px rgba(132, 36, 240, .45);
+  box-shadow: 0 16px 36px -10px rgba(37, 211, 102, .45);
   position: relative;
   overflow: hidden;
   transition: transform .18s ease, box-shadow .18s ease;
@@ -287,7 +287,7 @@ img { max-width: 100%; display: block; }
 
 .cta:hover, .cta:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 20px 46px -10px rgba(132, 36, 240, .55);
+  box-shadow: 0 20px 46px -10px rgba(37, 211, 102, .55);
 }
 
 .cta:active { transform: translateY(0) scale(.99); }
@@ -426,20 +426,27 @@ img { max-width: 100%; display: block; }
 .group-images {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 16px;
   margin: 26px 0 24px;
 }
 
 .group-images img {
   width: 100%;
   height: auto;
+  min-height: 360px;
   border-radius: 18px;
   border: 1px solid rgba(15, 23, 42, .08);
   box-shadow: 0 18px 45px -30px rgba(15, 23, 42, .2);
   object-fit: contain;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 980px) {
+  .group-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
   .group-images {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
