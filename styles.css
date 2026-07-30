@@ -53,12 +53,13 @@ body {
 img { max-width: 100%; display: block; }
 
 .alert-banner {
-  margin: 0 0 24px;
+  position: relative;
   width: 100%;
+  margin: 0;
   padding: 16px 18px;
   border-radius: 0 0 18px 18px;
   background: #dc2626;
-  border: 1px solid #b91c1c;
+  border: 0;
   color: #fff;
   font-weight: 900;
   text-align: center;
@@ -66,6 +67,7 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
   font-size: 14px;
   box-shadow: 0 10px 24px -12px rgba(220, 38, 38, .75);
+  z-index: 2;
 }
 
 /* ==========================================================
@@ -75,7 +77,7 @@ img { max-width: 100%; display: block; }
 .wrap {
   position: relative;
   z-index: 1;
-  max-width: var(--max);
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 18px 130px;
 }
@@ -84,7 +86,7 @@ img { max-width: 100%; display: block; }
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 0 0 var(--radius) var(--radius);
-  padding: 28px 22px 30px;
+  padding: 32px 22px 30px;
   text-align: center;
   box-shadow: 0 26px 80px -40px rgba(15, 23, 42, .16);
   position: relative;
@@ -423,24 +425,23 @@ img { max-width: 100%; display: block; }
 
 .group-images {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
   margin: 26px 0 24px;
 }
 
 .group-images img {
   width: 100%;
+  height: auto;
   border-radius: 18px;
   border: 1px solid rgba(15, 23, 42, .08);
   box-shadow: 0 18px 45px -30px rgba(15, 23, 42, .2);
-  object-fit: cover;
-  aspect-ratio: 4 / 3;
-  min-height: 320px;
+  object-fit: contain;
 }
 
-@media (max-width: 920px) {
+@media (min-width: 900px) {
   .group-images {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
