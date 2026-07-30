@@ -114,20 +114,26 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 18px 50px -18px rgba(0, 0, 0, .9);
 }
 
+/* cada frase ocupa uma linha inteira: a branca em cima, a amarela embaixo.
+   O 6.2vw é calculado em cima da frase mais larga ("EM ROUPAS E PERFUMES!",
+   que mede 13,8x o tamanho da fonte) para nunca quebrar, nem em telas de
+   320px. Se mudar o texto para algo mais longo, reduza esse valor. */
 h1 {
   font-family: var(--titulo);
-  font-size: clamp(28px, 7.6vw, 58px);
-  line-height: 1.04;
+  font-size: clamp(17px, 6.2vw, 58px);
+  line-height: 1.06;
   letter-spacing: -.025em;
   text-transform: uppercase;
-  text-wrap: balance;
   margin: 0 0 16px;
 }
 
-h1 .destaque {
+h1 .linha {
   display: block;
+  white-space: nowrap;
+}
+
+h1 .destaque {
   color: var(--amarelo);
-  text-wrap: balance;
   margin-top: 2px;
 }
 
