@@ -224,27 +224,27 @@ h1 .excl { color: var(--branco); }
 
 .celulares {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   justify-content: flex-start;
   align-items: flex-start;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 4px 0 14px;
+  padding: 4px 20px 16px;
   margin: 0 -20px;
-  padding-inline: 20px;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .celulares::-webkit-scrollbar { display: none; }
 
 .celular {
   flex: 0 0 auto;
-  width: 216px;
+  width: min(80vw, 340px);
   margin: 0;
   scroll-snap-align: center;
   position: relative;
-  padding: 9px;
-  border-radius: 30px;
+  padding: 10px;
+  border-radius: 34px;
   background: linear-gradient(160deg, #33383F 0%, #14171C 55%, #2A2F36 100%);
   box-shadow: 0 22px 48px -20px rgba(0, 0, 0, .95);
 }
@@ -253,11 +253,11 @@ h1 .excl { color: var(--branco); }
 .celular::before {
   content: '';
   position: absolute;
-  top: 17px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 58px;
-  height: 15px;
+  width: 26%;
+  height: 3.1%;
   border-radius: 999px;
   background: #05070A;
   z-index: 2;
@@ -266,7 +266,7 @@ h1 .excl { color: var(--branco); }
 .celular img {
   width: 100%;
   height: auto;
-  border-radius: 22px;
+  border-radius: 25px;
   background: #161717;
 }
 
@@ -274,6 +274,12 @@ h1 .excl { color: var(--branco); }
   font-size: 13.5px;
   color: var(--cinza);
   margin: 8px 0 0;
+}
+
+.arraste {
+  display: block;
+  color: var(--cinza-2);
+  font-size: 12.5px;
 }
 
 /* ==========================================================
@@ -348,26 +354,32 @@ footer p { margin: 0 0 6px; }
 @media (min-width: 760px) {
   .hero { padding: 60px 0 66px; }
   .foto { width: 270px; height: 270px; margin-bottom: 30px; }
+  .celular { width: 320px; }
+}
 
+/* a partir daqui os quatro cabem lado a lado */
+@media (min-width: 1120px) {
   .celulares {
     justify-content: center;
     overflow: visible;
-    gap: 22px;
+    gap: 20px;
     margin: 0;
-    padding-inline: 0;
+    padding: 10px 0 16px;
+    width: 100vw;
+    max-width: 1240px;
+    margin-inline: calc(50% - min(50vw, 620px));
   }
 
-  .celular { width: 250px; }
+  .celular { width: 268px; }
 
-  /* o do meio um pouco à frente */
-  .celular:nth-child(2) {
-    transform: translateY(-14px) scale(1.04);
+  /* os dois do meio um passo à frente */
+  .celular:nth-child(2),
+  .celular:nth-child(3) {
+    transform: translateY(-16px);
     z-index: 1;
   }
-}
 
-@media (min-width: 1000px) {
-  .celular { width: 280px; }
+  .arraste { display: none; }
 }
 
 /* ==========================================================
