@@ -230,9 +230,9 @@ h1 .excl { color: var(--branco); }
 
 .celulares {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 4px 20px 16px;
@@ -243,37 +243,26 @@ h1 .excl { color: var(--branco); }
 
 .celulares::-webkit-scrollbar { display: none; }
 
+/* Os prints têm proporções diferentes (o balão de cada oferta tem altura
+   própria). Por isso a altura é que manda e a largura acompanha: a fileira
+   fica alinhada e, como todo print é maior que a altura exibida, o navegador
+   sempre REDUZ a imagem — nunca amplia. É isso que mantém o texto nítido. */
 .celular {
   flex: 0 0 auto;
-  width: min(80vw, 340px);
+  height: 500px;
   margin: 0;
   scroll-snap-align: center;
-  position: relative;
-  padding: 10px;
-  border-radius: 34px;
-  background: linear-gradient(160deg, #33383F 0%, #14171C 55%, #2A2F36 100%);
-  box-shadow: 0 22px 48px -20px rgba(0, 0, 0, .95);
-}
-
-/* ilha do celular, dentro da faixa de status do print */
-.celular::before {
-  content: '';
-  position: absolute;
-  top: 2.1%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 25%;
-  height: 2.4%;
-  border-radius: 999px;
-  background: #05070A;
-  z-index: 2;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #242626;
+  border: 1px solid rgba(255, 255, 255, .07);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, .9);
 }
 
 .celular img {
-  width: 100%;
-  height: auto;
-  border-radius: 25px;
-  background: #161717;
+  height: 100%;
+  width: auto;
+  max-width: none;
 }
 
 .legenda {
@@ -286,32 +275,6 @@ h1 .excl { color: var(--branco); }
   display: block;
   color: var(--cinza-2);
   font-size: 12.5px;
-}
-
-/* ==========================================================
-   FECHAMENTO
-   ========================================================== */
-
-.fim {
-  padding: 46px 0 54px;
-  border-top: 1px solid var(--linha);
-  background: var(--preto-2);
-}
-
-.fim h2 {
-  font-family: var(--titulo);
-  font-size: clamp(22px, 6vw, 38px);
-  line-height: 1.14;
-  letter-spacing: -.02em;
-  text-transform: uppercase;
-  text-wrap: balance;
-  margin: 0 0 26px;
-}
-
-.miudo {
-  font-size: 13px;
-  color: var(--cinza-2);
-  margin: 16px 0 0;
 }
 
 /* ==========================================================
@@ -360,7 +323,7 @@ footer p { margin: 0 0 6px; }
 @media (min-width: 760px) {
   .hero { padding: 60px 0 66px; }
   .foto { width: 270px; height: 270px; margin-bottom: 30px; }
-  .celular { width: 320px; }
+  .celular { height: 540px; }
 }
 
 /* a partir daqui os quatro cabem lado a lado */
@@ -368,7 +331,7 @@ footer p { margin: 0 0 6px; }
   .celulares {
     justify-content: center;
     overflow: visible;
-    gap: 20px;
+    gap: 18px;
     margin: 0;
     padding: 10px 0 16px;
     width: 100vw;
@@ -376,29 +339,10 @@ footer p { margin: 0 0 6px; }
     margin-inline: calc(50% - min(50vw, 620px));
   }
 
-  .celular { width: 268px; }
-
-  /* os dois do meio um passo à frente */
-  .celular:nth-child(2),
-  .celular:nth-child(3) {
-    transform: translateY(-16px);
-    z-index: 1;
-  }
+  .celular { height: 560px; }
 
   .arraste { display: none; }
 }
-
-/* ==========================================================
-   REVELAR AO ROLAR
-   ========================================================== */
-
-.js .reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .55s ease, transform .55s cubic-bezier(.22, 1, .36, 1);
-}
-
-.js .reveal.is-in { opacity: 1; transform: none; }
 
 /* ==========================================================
    ACESSIBILIDADE
@@ -416,5 +360,4 @@ footer p { margin: 0 0 6px; }
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
-  .js .reveal { opacity: 1; transform: none; }
 }
