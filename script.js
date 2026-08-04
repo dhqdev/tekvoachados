@@ -6,10 +6,6 @@
 
   var semAnimacao = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Ano no rodapé ---------- */
-  var ano = document.getElementById('year');
-  if (ano) ano.textContent = new Date().getFullYear();
-
   /* ---------- Contador de membros ---------- */
   var contador = document.querySelector('.counter');
 

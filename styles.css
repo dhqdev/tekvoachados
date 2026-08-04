@@ -208,7 +208,7 @@ h1 .excl { color: var(--branco); }
    ========================================================== */
 
 .prova {
-  padding: 8px 0 54px;
+  padding: 8px 0 72px;
   border-top: 1px solid var(--linha);
   margin-top: 8px;
 }
@@ -275,45 +275,6 @@ h1 .excl { color: var(--branco); }
   display: block;
   color: var(--cinza-2);
   font-size: 12.5px;
-}
-
-/* ==========================================================
-   RODAPÉ
-   ========================================================== */
-
-footer {
-  text-align: center;
-  padding: 34px 20px 40px;
-  border-top: 1px solid var(--linha);
-  color: var(--cinza-2);
-  font-size: 12.5px;
-}
-
-footer img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  margin: 0 auto 12px;
-  opacity: .9;
-}
-
-footer p { margin: 0 0 6px; }
-
-.marca {
-  font-family: var(--titulo);
-  font-size: 16px;
-  color: var(--branco);
-  letter-spacing: -.01em;
-}
-
-.marca span { color: var(--roxo); }
-
-.aviso {
-  font-size: 11px;
-  max-width: 420px;
-  margin: 10px auto 0;
-  line-height: 1.5;
-  opacity: .75;
 }
 
 /* ==========================================================
