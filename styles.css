@@ -156,36 +156,75 @@ h1 .excl { color: var(--branco); }
    ========================================================== */
 
 .botao {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 13px;
   width: 100%;
-  max-width: 620px;
-  padding: 19px 22px;
+  max-width: 560px;
+  padding: 21px 24px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--verde) 0%, var(--verde-2) 100%);
+  background: linear-gradient(180deg, #3BE87E 0%, var(--verde) 46%, var(--verde-2) 100%);
   color: #fff;
-  font-size: clamp(13px, 3.5vw, 20px);
+  font-size: clamp(15px, 4.3vw, 21px);
   font-weight: 900;
-  letter-spacing: .01em;
+  letter-spacing: .005em;
+  line-height: 1.2;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 0 0 6px rgba(37, 211, 102, .12), 0 16px 40px -14px rgba(37, 211, 102, .7);
-  transition: transform .16s ease, box-shadow .16s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+  overflow: hidden;
+  /* relevo: luz na borda de cima, sombra na de baixo, halo verde em volta */
+  box-shadow:
+    inset 0  1px 0 rgba(255, 255, 255, .34),
+    inset 0 -2px 0 rgba(0, 0, 0, .16),
+    0 0 0 5px rgba(37, 211, 102, .13),
+    0 18px 42px -12px rgba(37, 211, 102, .65);
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+  animation: pulsar 2.8s ease-in-out infinite;
 }
 
-.botao span {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  white-space: nowrap;
+/* brilho que atravessa o botão de tempos em tempos, pra puxar o olho */
+.botao::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .40) 50%, transparent 62%);
+  transform: translateX(-135%);
+  animation: brilho 3.6s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.botao svg { width: clamp(21px, 5.6vw, 26px); height: clamp(21px, 5.6vw, 26px); flex-shrink: 0; }
+.botao svg, .botao span { position: relative; z-index: 1; }
 
+.botao span { text-wrap: balance; }
+
+.botao svg { width: clamp(24px, 7vw, 28px); height: clamp(24px, 7vw, 28px); flex-shrink: 0; }
+
+@keyframes pulsar {
+  0%, 100% { box-shadow:
+    inset 0  1px 0 rgba(255, 255, 255, .34),
+    inset 0 -2px 0 rgba(0, 0, 0, .16),
+    0 0 0 5px rgba(37, 211, 102, .13),
+    0 18px 42px -12px rgba(37, 211, 102, .65); }
+  50%      { box-shadow:
+    inset 0  1px 0 rgba(255, 255, 255, .34),
+    inset 0 -2px 0 rgba(0, 0, 0, .16),
+    0 0 0 14px rgba(37, 211, 102, 0),
+    0 18px 42px -12px rgba(37, 211, 102, .65); }
+}
+
+@keyframes brilho {
+  0%, 58%   { transform: translateX(-135%); }
+  88%, 100% { transform: translateX(135%); }
+}
+
+/* o halo é animado, então quem manda na sombra é o @keyframes:
+   no hover mexemos só no que a animação não controla. */
 .botao:hover, .botao:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 8px rgba(37, 211, 102, .16), 0 20px 48px -12px rgba(37, 211, 102, .85);
+  filter: brightness(1.07) saturate(1.05);
 }
 
 .botao:active { transform: translateY(0) scale(.99); }
